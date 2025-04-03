@@ -1,0 +1,22 @@
+
+<svg width="400" height="150" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wings and Star Group -->
+  <g transform="translate(200, 50)">
+    <!-- Left Wings -->
+    <path d="M-10 0 L-50 -15 L-80 -5 L-120 5 L-140 20 L-110 15 L-80 10 L-40 5 L-10 0Z" fill="#881c21"/>
+    <path d="M-10 0 L-40 0 L-70 20 L-110 35 L-130 55 L-100 40 L-70 25 L-40 10 L-10 5 L-10 0Z" fill="#881c21"/>
+    <path d="M-10 5 L-35 15 L-60 40 L-85 70 L-95 85 L-75 65 L-55 45 L-35 25 L-10 10 L-10 5Z" fill="#881c21"/>
+    
+    <!-- Right Wings -->
+    <path d="M10 0 L50 -15 L80 -5 L120 5 L140 20 L110 15 L80 10 L40 5 L10 0Z" fill="#881c21"/>
+    <path d="M10 0 L40 0 L70 20 L110 35 L130 55 L100 40 L70 25 L40 10 L10 5 L10 0Z" fill="#881c21"/>
+    <path d="M10 5 L35 15 L60 40 L85 70 L95 85 L75 65 L55 45 L35 25 L10 10 L10 5Z" fill="#881c21"/>
+    
+    <!-- Center Star -->
+    <path d="M0 -20 L5 -5 L20 -5 L8 5 L12 20 L0 10 L-12 20 L-8 5 L-20 -5 L-5 -5 L0 -20Z" fill="#e1c9a1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="70" y="120" font-family="'Montserrat', sans-serif" font-weight="700" font-size="36" fill="#e1c9a1" letter-spacing="4">BLAKE</text>
+  <text x="210" y="120" font-family="'Montserrat', sans-serif" font-weight="700" font-size="36" fill="#e1c9a1" letter-spacing="4">WHITEN</text>
+</svg>
