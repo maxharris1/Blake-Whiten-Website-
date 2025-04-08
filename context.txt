@@ -1,0 +1,42 @@
+# Blake Whiten Landing Page - Project Context
+
+## Overview
+This is a landing page for country artist Blake Whiten built using React, TypeScript, and Tailwind CSS. The site was imported from Lovable and includes sections for music, videos, and tour dates.
+
+## Tech Stack
+- React with TypeScript
+- Vite as the build tool
+- Tailwind CSS for styling
+- React Router for navigation
+- TanStack Query for data fetching
+
+## Key Components
+1. Navbar - Navigation with smooth scrolling to page sections
+2. Hero - Full-screen background image 
+3. MusicSection - Carousel showcasing songs
+4. VideosSection - Video showcase with play button
+5. TourSection - List of upcoming tour dates
+6. Footer - Copyright and additional links
+
+## Recent Changes
+1. Updated Hero image to use a full-size campfire photo with object-cover to fill the screen without black borders
+2. Implemented smooth scrolling for navigation items
+3. Added useHashScroll hook to handle scrolling to sections on page load
+4. Increased logo size in the navbar (now using h-96 class)
+5. Moved navbar higher up with negative margin (-mt-24)
+
+## Asset Locations
+- Images are stored in /public/lovable-uploads/
+- The main hero image is "Avatar Full Size (Photo Cred_ Allister Ann) (2).jpg"
+- Logo is "6703af04-7193-4c7b-9be2-15205aa596a9.png"
+
+## Outstanding Tasks
+- Add actual links to "Listen Now" buttons in Music section
+- Update tour dates with real information
+- Implement video playback functionality
+- Make site fully responsive for mobile devices
+
+## Layout Notes
+- Navbar is absolutely positioned with negative top margin for visual effect
+- Sections use ID attributes (#music, #videos, #tour) for smooth scrolling targets
+- Color scheme uses maroon, tan and gold tones with dark backgrounds

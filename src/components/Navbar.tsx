@@ -68,6 +68,12 @@ const Navbar = () => {
         >
           TOUR
         </button>
+        <button 
+          onClick={() => scrollToSection("merch")} 
+          className="hover:opacity-80 transition cursor-pointer"
+        >
+          MERCH
+        </button>
       </div>
       
       {/* Mobile Menu Button */}
@@ -107,6 +113,12 @@ const Navbar = () => {
             className="hover:opacity-80 transition cursor-pointer w-full text-center py-2"
           >
             TOUR
+          </button>
+          <button 
+            onClick={() => scrollToSection("merch")} 
+            className="hover:opacity-80 transition cursor-pointer w-full text-center py-2"
+          >
+            MERCH
           </button>
         </div>
       )}

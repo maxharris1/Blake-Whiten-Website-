@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import MusicSection from "../components/MusicSection";
 import VideosSection from "../components/VideosSection";
 import TourSection from "../components/TourSection";
+import MerchSection from "../components/MerchSection";
 import Footer from "../components/Footer";
 import { useHashScroll } from "../hooks/useHashScroll";
 
@@ -17,6 +18,7 @@ const Index = () => {
       <MusicSection />
       <VideosSection />
       <TourSection />
+      <MerchSection />
       <Footer />
     </div>
   );
