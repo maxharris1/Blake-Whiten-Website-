@@ -20,6 +20,25 @@
           "value": "1; mode=block"
         }
       ]
+    },
+    {
+      "source": "/(.*)\\.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/shopify.js",
+      "dest": "/shopify.js",
+      "headers": {
+        "Cache-Control": "public, max-age=86400",
+        "Content-Type": "application/javascript; charset=utf-8"
+      }
     }
   ]
 } 

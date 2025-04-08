@@ -247,10 +247,6 @@ const MerchSection = () => {
       document.head.appendChild(styleEl);
     };
 
-    // Check if we need to load scripts
-    const shopifySDK = document.querySelector('script[src*="buy-button-storefront"]');
-    const shopifyScript = document.querySelector('script[src*="shopify.js"]');
-
     // Elements we'll need to move to body
     const cartElement = document.getElementById('merch-section-cart');
     const overlayElement = document.getElementById('merch-section-overlay');
@@ -289,77 +285,46 @@ const MerchSection = () => {
         return;
       }
 
-      // Load Shopify SDK if not already loaded
-      if (!shopifySDK) {
-        console.log('Loading Shopify SDK...');
-        const script = document.createElement('script');
-        script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-        script.async = true;
-        script.onload = () => {
-          console.log('Shopify SDK loaded successfully');
-          // Load our custom shopify.js script if not already loaded
-          if (!shopifyScript) {
-            console.log('Loading shopify.js...');
-            const customScript = document.createElement('script');
-            customScript.src = './shopify.js'; // Use relative path instead of absolute
-            customScript.onload = () => {
-              console.log('shopify.js loaded successfully');
-              setTimeout(() => {
-                debugScriptStatus();
-                if (window.displayProducts) {
-                  console.log('Initializing displayProducts...');
-                  window.displayProducts();
-                  window.setupCartEventListeners();
-                  window.updateCartUI();
-                } else {
-                  console.error('displayProducts function not found after script load');
-                }
-              }, 500);
-            };
-            document.body.appendChild(customScript);
-          } else {
-            // If script already exists, manually initialize the products
-            if (window.displayProducts && window.setupCartEventListeners && window.updateCartUI) {
-              console.log('Initializing with existing shopify.js...');
-              window.displayProducts();
-              window.setupCartEventListeners();
-              window.updateCartUI();
-            } else {
-              console.error('Required functions not found on window object');
-            }
-          }
-        };
-        document.body.appendChild(script);
-      } else if (!shopifyScript) {
-        // If SDK exists but custom script doesn't
-        console.log('SDK exists, loading shopify.js...');
+      // Check if the Shopify SDK is already loaded
+      const loadShopifyScript = () => {
+        console.log('Loading shopify.js...');
         const customScript = document.createElement('script');
-        customScript.src = './shopify.js'; // Use relative path instead of absolute
+        customScript.src = '/shopify.js';
+        customScript.type = 'text/javascript';
         customScript.onload = () => {
           console.log('shopify.js loaded successfully');
           setTimeout(() => {
             debugScriptStatus();
             if (window.displayProducts) {
+              console.log('Initializing display functions...');
               window.displayProducts();
               window.setupCartEventListeners();
               window.updateCartUI();
+            } else {
+              console.error('displayProducts function not found after script load');
             }
           }, 500);
         };
+        customScript.onerror = (e) => {
+          console.error('Error loading shopify.js:', e);
+        };
         document.body.appendChild(customScript);
+      };
+
+      // Check if ShopifyBuy is available (should be loaded in the HTML)
+      if (typeof ShopifyBuy !== 'undefined') {
+        loadShopifyScript();
       } else {
-        // Both scripts exist, manually initialize
-        console.log('Both scripts already exist, initializing...');
-        if (window.displayProducts && window.setupCartEventListeners && window.updateCartUI) {
-          setTimeout(() => {
-            window.displayProducts();
-            window.setupCartEventListeners();
-            window.updateCartUI();
-          }, 500); // Small timeout to ensure DOM is ready
-        } else {
-          console.error('Both scripts exist but required functions not found');
-          debugScriptStatus();
-        }
+        // Fallback: If SDK not loaded in HTML, load it dynamically
+        console.log('Loading Shopify SDK dynamically...');
+        const script = document.createElement('script');
+        script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+        script.async = true;
+        script.onload = loadShopifyScript;
+        script.onerror = (e) => {
+          console.error('Error loading Shopify SDK:', e);
+        };
+        document.body.appendChild(script);
       }
     }
 
@@ -438,6 +403,9 @@ declare global {
       STOREFRONT_ACCESS_TOKEN: string;
     }
   }
+  
+  // Add ShopifyBuy global variable
+  const ShopifyBuy: any;
 }
 
 export default MerchSection; 
