@@ -29,16 +29,19 @@
           "value": "application/javascript"
         }
       ]
-    }
-  ],
-  "routes": [
+    },
     {
-      "src": "/shopify.js",
-      "dest": "/shopify.js",
-      "headers": {
-        "Cache-Control": "public, max-age=86400",
-        "Content-Type": "application/javascript; charset=utf-8"
-      }
+      "source": "/shopify.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
     }
   ]
 } 
