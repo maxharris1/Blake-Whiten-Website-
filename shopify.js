@@ -9,13 +9,13 @@ console.log('shopify.js script loaded and executing');
 
 // Initialize the Shopify client for product fetching only
 const client = ShopifyBuy.buildClient({
-  domain: '9f75fd-70.myshopify.com',
-  storefrontAccessToken: 'cc62d28cb17f15fa46ba52533d326f35',
+  domain: (window.SHOPIFY_ENV && window.SHOPIFY_ENV.DOMAIN) || '9f75fd-70.myshopify.com',
+  storefrontAccessToken: (window.SHOPIFY_ENV && window.SHOPIFY_ENV.STOREFRONT_ACCESS_TOKEN) || 'cc62d28cb17f15fa46ba52533d326f35',
 });
 
 // Global variables
 let cartItems = [];
-const SHOP_DOMAIN = 'https://9f75fd-70.myshopify.com';
+const SHOP_DOMAIN = `https://${(window.SHOPIFY_ENV && window.SHOPIFY_ENV.DOMAIN) || '9f75fd-70.myshopify.com'}`;
 const cartStorageKey = 'shopify_cart_items';
 const PRIMARY_COLOR = '#6e1b21'; // Maroon
 const PRIMARY_HOVER = '#8a2329'; // Darker maroon for hover

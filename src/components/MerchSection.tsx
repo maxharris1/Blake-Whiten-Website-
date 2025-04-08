@@ -273,6 +273,12 @@ const MerchSection = () => {
     if (!initialized.current) {
       initialized.current = true;
 
+      // Inject environment variables into window object for shopify.js to use
+      window.SHOPIFY_ENV = {
+        DOMAIN: import.meta.env.VITE_SHOPIFY_DOMAIN || '9f75fd-70.myshopify.com',
+        STOREFRONT_ACCESS_TOKEN: import.meta.env.VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN || 'cc62d28cb17f15fa46ba52533d326f35'
+      };
+
       // Load Shopify SDK if not already loaded
       if (!shopifySDK) {
         console.log('Loading Shopify SDK...');
@@ -417,6 +423,10 @@ declare global {
     displayProducts: () => void;
     setupCartEventListeners: () => void;
     updateCartUI: () => void;
+    SHOPIFY_ENV?: {
+      DOMAIN: string;
+      STOREFRONT_ACCESS_TOKEN: string;
+    }
   }
 }
 
