@@ -275,9 +275,19 @@ const MerchSection = () => {
 
       // Inject environment variables into window object for shopify.js to use
       window.SHOPIFY_ENV = {
-        DOMAIN: import.meta.env.VITE_SHOPIFY_DOMAIN || '9f75fd-70.myshopify.com',
-        STOREFRONT_ACCESS_TOKEN: import.meta.env.VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN || 'cc62d28cb17f15fa46ba52533d326f35'
+        DOMAIN: import.meta.env.VITE_SHOPIFY_DOMAIN,
+        STOREFRONT_ACCESS_TOKEN: import.meta.env.VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN
       };
+
+      // Check if environment variables are present
+      if (!import.meta.env.VITE_SHOPIFY_DOMAIN || !import.meta.env.VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
+        console.error('Shopify environment variables are missing. Please check your .env.local file');
+        const productsContainer = document.getElementById('shopify-products');
+        if (productsContainer) {
+          productsContainer.innerHTML = '<p class="error-message">Unable to load products. Environment variables are missing.</p>';
+        }
+        return;
+      }
 
       // Load Shopify SDK if not already loaded
       if (!shopifySDK) {

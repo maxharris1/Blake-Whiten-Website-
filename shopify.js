@@ -9,13 +9,13 @@ console.log('shopify.js script loaded and executing');
 
 // Initialize the Shopify client for product fetching only
 const client = ShopifyBuy.buildClient({
-  domain: (window.SHOPIFY_ENV && window.SHOPIFY_ENV.DOMAIN) || '9f75fd-70.myshopify.com',
-  storefrontAccessToken: (window.SHOPIFY_ENV && window.SHOPIFY_ENV.STOREFRONT_ACCESS_TOKEN) || 'cc62d28cb17f15fa46ba52533d326f35',
+  domain: window.SHOPIFY_ENV && window.SHOPIFY_ENV.DOMAIN,
+  storefrontAccessToken: window.SHOPIFY_ENV && window.SHOPIFY_ENV.STOREFRONT_ACCESS_TOKEN,
 });
 
 // Global variables
 let cartItems = [];
-const SHOP_DOMAIN = `https://${(window.SHOPIFY_ENV && window.SHOPIFY_ENV.DOMAIN) || '9f75fd-70.myshopify.com'}`;
+const SHOP_DOMAIN = window.SHOPIFY_ENV && window.SHOPIFY_ENV.DOMAIN ? `https://${window.SHOPIFY_ENV.DOMAIN}` : '';
 const cartStorageKey = 'shopify_cart_items';
 const PRIMARY_COLOR = '#6e1b21'; // Maroon
 const PRIMARY_HOVER = '#8a2329'; // Darker maroon for hover
@@ -23,6 +23,18 @@ const SECONDARY_COLOR = '#e1c9a1'; // Tan
 
 // DOM elements - Only initialize automatically on standalone merch page, not in React component
 document.addEventListener('DOMContentLoaded', () => {
+  // Check for environment variables
+  if (!window.SHOPIFY_ENV || !window.SHOPIFY_ENV.DOMAIN || !window.SHOPIFY_ENV.STOREFRONT_ACCESS_TOKEN) {
+    console.error('Shopify environment variables are missing. Please check your configuration.');
+    
+    // Display error message in products container
+    const productsContainer = document.getElementById('shopify-products');
+    if (productsContainer) {
+      productsContainer.innerHTML = '<p class="error-message">Unable to load products. Please contact the site administrator.</p>';
+    }
+    return;
+  }
+  
   // Check if we're on the standalone merch page (not in React)
   const isStandaloneMerchPage = window.location.pathname.includes('merch.html');
   
