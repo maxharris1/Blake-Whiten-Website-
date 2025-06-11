@@ -2,45 +2,38 @@
 const tourDates = [
   { 
     id: 1, 
-    date: "APR 05 - FRI", 
-    venue: "Sons Of Hermann Hall", 
-    location: "Dallas, TX", 
-    ticketLink: "https://www.bandsintown.com/e/106617249-blake-whiten-at-sons-of-hermann-hall?came_from=251&utm_medium=web&utm_source=artist_page&utm_campaign=ticket_rsvp" 
+    date: "JUN 26-28 - THU-SAT", 
+    venue: "Country Jam Ranch", 
+    location: "Mack, CO", 
+    ticketLink: "https://countryjam.com/festival-passes/" 
   },
   { 
     id: 2, 
-    date: "APR 19 - FRI", 
-    venue: "TempleLive Fort Smith", 
-    location: "Fort Smith, AR", 
-    ticketLink: "https://www.bandsintown.com/e/106617283-blake-whiten-at-temple-live-fort-smith-fort-smith-ar?came_from=251&utm_medium=web&utm_source=artist_page&utm_campaign=event" 
+    date: "AUG 07-10 - THU-SUN", 
+    venue: "VOA FESTIVAL 2025", 
+    location: "Butler County, OH", 
+    ticketLink: "https://voacountrymusicfest.com/?utm_source=website&utm_medium=web&utm_campaign=blakewhiten&utm_content=blakewhiten" 
   },
   { 
     id: 3, 
-    date: "APR 25 - THU", 
-    venue: "Wendell's", 
-    location: "Anderson, SC", 
-    ticketLink: "https://www.bandsintown.com/e/106617307-blake-whiten-at-wendell's?came_from=251&utm_medium=web&utm_source=artist_page&utm_campaign=ticket_rsvp" 
+    date: "OCT 25 - SAT", 
+    venue: "Sydney Showground", 
+    location: "Sydney Olympic Park, Australia", 
+    ticketLink: "https://www.axs.com/events/983677/ridin-hearts-festival-2025-tickets?cid=usaffbandsintown" 
   },
   { 
     id: 4, 
-    date: "APR 29 - MON", 
-    venue: "The Roxy Theatre", 
-    location: "Los Angeles, CA", 
-    ticketLink: "https://www.bandsintown.com/e/106617330-blake-whiten-at-the-roxy-theatre?came_from=251&utm_medium=web&utm_source=artist_page&utm_campaign=ticket_rsvp" 
+    date: "OCT 26 - SUN", 
+    venue: "Caribbean Gardens", 
+    location: "East Melbourne, Australia", 
+    ticketLink: "https://www.axs.com/events/983676/ridin-hearts-festival-2025-tickets?cid=usaffbandsintown" 
   },
   { 
     id: 5, 
-    date: "MAY 08 - WED", 
-    venue: "The Barrelhouse Ballroom", 
-    location: "Chattanooga, TN", 
-    ticketLink: "https://www.bandsintown.com/e/106617352-blake-whiten-at-the-barrelhouse-ballroom?came_from=251&utm_medium=web&utm_source=artist_page&utm_campaign=ticket_rsvp" 
-  },
-  { 
-    id: 6, 
-    date: "MAY 09 - THU", 
-    venue: "Coyote Joe's", 
-    location: "Charlotte, NC", 
-    ticketLink: "https://www.bandsintown.com/e/106617376-blake-whiten-at-coyote-joe's?came_from=251&utm_medium=web&utm_source=artist_page&utm_campaign=event" 
+    date: "NOV 21-23 - FRI-SUN", 
+    venue: "St Petes Fest 2025", 
+    location: "St. Petersburg, FL", 
+    ticketLink: "https://www.eventliveus.com/event/10109/spcf25" 
   }
 ];
 
@@ -106,7 +99,7 @@ const TourSection = () => {
               rel="noopener noreferrer"
               className="text-maroon hover:text-maroon/80 underline text-sm"
             >
-              View All 12 Upcoming Shows on Bandsintown
+              View All 5 Upcoming Shows on Bandsintown
             </a>
           </div>
         </div>
